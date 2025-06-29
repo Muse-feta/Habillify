@@ -96,9 +96,8 @@ const RenderItem = ({
 
   return (
     <View style={[styles.itemContainer, { width: SCREEN_WIDTH }]}>
-      {/* <Animated.Image source={item.image} style={imageAnimatedStyle} /> */}
 
-      <Animated.Image source={item.image} style={imageAnimatedStyle} />
+      <Animated.Image source={item.image} style={imageAnimatedStyle} className=" mt-16 mb-[-70]" />
       <Animated.View style={textAnimatedStyle}>
         <Text style={styles.itemTitle}>
           {item.title.split(" ")[0] + " "}
@@ -182,7 +181,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   itemText: {
-    color: "#FFFFFF",
+    color: "#FFFFFF80",
     fontSize: 17,
     textAlign: "center",
     lineHeight: 20,
