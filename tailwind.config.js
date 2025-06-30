@@ -6,6 +6,7 @@ module.exports = {
     "./components/**/*.{js,jsx,ts,tsx}",
     "./screens/**/*.{js,jsx,ts,tsx}",
     "./app/**/*.{js,jsx,ts,tsx}",
+    "./context/**/*.{js,jsx,ts,tsx}",
   ],
   presets: [require("nativewind/preset")],
   theme: {
@@ -16,6 +17,8 @@ module.exports = {
         surfaceDark: "#121723", // input bg, panels
         "text-light": "#FFFFFF", // text on dark bg
         "text-dark": "#16171C", // text on light bg
+        "text-faded-light": "#FFFFFF80", // semi-transparent white
+        "text-faded-dark": "#000000A6", // semi-transparent black
         border: "#3A3D43",
         disabled: "#50555E",
         error: "#FF4C61",

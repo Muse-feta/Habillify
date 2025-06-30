@@ -22,6 +22,8 @@ import {
   onBoardingSlides,
   type OnBoardingSlide,
 } from "../../constants/onBoardingSlides";
+import { useTheme } from "@/context/useTheme";
+// import Icon from "react-native-vector-icons/MaterialIcons";
 
 const RenderItem = ({
   item,
@@ -94,23 +96,39 @@ const RenderItem = ({
     };
   });
 
+  const { theme } = useTheme();
+
   return (
     <View style={[styles.itemContainer, { width: SCREEN_WIDTH }]}>
-
-      <Animated.Image source={item.image} style={imageAnimatedStyle} className=" mt-16 mb-[-70]" />
+      <Animated.Image
+        source={item.image}
+        style={imageAnimatedStyle}
+        className=" mt-16 mb-[-70]"
+      />
       <Animated.View style={textAnimatedStyle}>
-        <Text style={styles.itemTitle}>
+        <Text
+          className={theme === "light" ? "text-text-dark" : "text-text-light"}
+          style={styles.itemTitle}
+        >
           {item.title.split(" ")[0] + " "}
           <Text style={{ color: "#cc001f" }}>{item.title.split(" ")[1]}</Text>
           {" " + item.title.split(" ").slice(2).join(" ")}
         </Text>
-        <Text style={styles.itemText}>{item.description}</Text>
+        <Text
+          className={
+            theme === "light" ? "text-text-faded-dark" : "text-text-faded-light"
+          }
+          style={styles.itemText}
+        >
+          {item.description}
+        </Text>
       </Animated.View>
     </View>
   );
 };
 
 export default function Onboarding() {
+  const { theme } = useTheme();
   const { width: SCREEN_WIDTH } = useWindowDimensions();
   const flatListRef = useAnimatedRef<FlatList<OnBoardingSlide>>();
 
@@ -132,7 +150,10 @@ export default function Onboarding() {
   });
 
   return (
-    <View style={styles.container}>
+    <View
+      className={theme === "light" ? "bg-backgroundLight" : "bg-[#0B121B]"}
+      style={styles.container}
+    >
       <Animated.FlatList
         ref={flatListRef as any}
         data={onBoardingSlides}
@@ -165,23 +186,23 @@ export default function Onboarding() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#0B121B",
+    // backgroundColor: "#0B121B",
   },
   itemContainer: {
     flex: 1,
-    backgroundColor: "#0B121B",
+    // backgroundColor: "#0B121B",
     alignItems: "center",
     justifyContent: "space-around",
   },
   itemTitle: {
-    color: "#FFFFFF",
+    // color: "#FFFFFF",
     fontSize: 35,
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 10,
   },
   itemText: {
-    color: "#FFFFFF80",
+    // color: "#FFFFFF80",
     fontSize: 17,
     textAlign: "center",
     lineHeight: 20,
